@@ -1,0 +1,6 @@
+[0mCMake Error: The following variables are used in this project, but they are set to NOTFOUND.
+Please set them or make sure they are set and tested correctly in the CMake files:
+/home/nuc11/fast_livo2_bxi4/src/livox_ros_driver2/LIVOX_INTERFACES_INCLUDE_DIRECTORIES
+   used as include directory in directory /home/nuc11/fast_livo2_bxi4/src/livox_ros_driver2
+[0m
+[0mCMake Generate step failed.  Build files cannot be regenerated correctly.[0m

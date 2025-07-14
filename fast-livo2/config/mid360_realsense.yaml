@@ -1,0 +1,161 @@
+/**:
+  ros__parameters:
+    # Camera parameters (RealSense D435I 实际内参)
+    model: Pinhole
+    width: 1280
+    height: 720
+    scale: 1.0
+    fx: 906.6724853515625
+    fy: 906.654541015625
+    cx: 645.5486450195312
+    cy: 368.05987548828125
+    d0: 0.0
+    d1: 0.0
+    d2: 0.0
+    d3: 0.0
+    # fx: 908.165637
+    # fy: 909.657834
+    # cx: 639.151499
+    # cy: 360.339354
+    # # 畸变参数0.130643 -0.223882 -0.001660 -0.008149 0.000000
+    # d0: 0.130643
+    # d1: -0.223882
+    # d2: -0.001660
+    # d3: -0.008149
+
+
+
+
+    common:
+      img_topic: "/camera/camera/color/image_raw"
+      lid_topic: "/livox/lidar"
+      imu_topic: "/livox/imu"
+      img_en: 0
+      lidar_en: 1
+      ros_driver_bug_fix: false  
+
+    extrin_calib:
+      # 外参标定 - 需要根据您的实际安装情况进行标定
+      # 这里提供初始值，建议进行精确标定
+      # extrinsic_T: [0.04165, 0.02326, -0.0284]
+      # extrinsic_R: [1.0, 0.0, 0.0,
+      #               0.0, 1.0, 0.0,
+      #               0.0, 0.0, 1.0]
+
+      # extrinsic_T: [-0.011, -0.02329, 0.04412]
+      # extrinsic_R: [1.0, 0.0, 0.0,
+      #               0.0, 1.0, 0.0,
+      #               0.0, 0.0, 1.0]
+      # Rcl: [0.00610193,-0.999863,-0.0154172,
+      #       -0.00615449,0.0153796,-0.999863,
+      #       0.999962,0.00619598,-0.0060598] 
+      # Pcl: [0.0194384, 0.104689,-0.0251952]
+
+      # 外参标定 - 自己标定的结果
+      # extrinsic_T: [-0.011, -0.02329, 0.04412]
+      # extrinsic_R: [1.0, 0.0, 0.0,
+      #               0.0, 1.0, 0.0,
+      #               0.0, 0.0, 1.0]
+      # Rcl: [0.00081, -0.19706, 0.98039, -0.98991, -0.13911, -0.02714, 0.14173, -0.97047, -0.19518]
+     
+      # Pcl: [0.29654, 0.09814, 0.45812]
+
+
+      #粗标结果：
+      # extrinsic_T: [-0.011, -0.02329, 0.04412]
+      # extrinsic_R: [1.0, 0.0, 0.0,
+      #               0.0, 1.0, 0.0,
+      #               0.0, 0.0, 1.0]
+      # Rcl: [0.07953, -0.24087, 0.96729,
+      #       -0.9916, -0.11834, 0.05206,
+      #       0.10193, -0.96332,-0.24826]
+      # Pcl: [0.14308, -0.12837, 0.53039]
+     #自己尝试手标的结果：
+      # extrinsic_T: [-0.011, -0.02329, 0.04412]
+      # extrinsic_R: [1.0, 0.0, 0.0,
+      #               0.0, 1.0, 0.0,
+      #               0.0, 0.0, 1.0]
+      # Rcl: [0.00610193,-0.999863,-0.0154172,
+      #       -0.00615449,0.0153796,-0.999863,
+      #       0.999962,0.00619598,-0.0060598] 
+      # Pcl: [0.0, 0.05,-0.05]
+
+   # only lidar:
+      extrinsic_T: [-0.011, -0.02329, 0.04412]   # LiDAR到IMU的平移向量
+      extrinsic_R: [1.0, 0.0, 0.0,               # LiDAR到IMU的旋转矩阵
+                    0.0, 1.0, 0.0,
+                    0.0, 0.0, 1.0]
+    # LiDAR到相机的变换
+      Rcl: [1.0, 0.0,0.0,
+            0.0, 1.0,0.0,
+            0.0, 0.0,1.0]
+      Pcl: [0.0, 0.0, 0.0]
+
+
+    time_offset: 
+      imu_time_offset: 0.0
+      img_time_offset: 0.0
+      exposure_time_init: 0.0
+
+    preprocess:
+      point_filter_num: 1
+      filter_size_surf: 0.1
+      lidar_type: 1 # Livox LiDAR
+      scan_line: 4
+      blind: 1.0
+
+    vio:
+      max_iterations: 5
+      outlier_threshold: 1000
+      img_point_cov: 100
+      patch_size: 8
+      patch_pyrimid_level: 4
+      normal_en: true
+      raycast_en: false
+      inverse_composition_en: false
+      exposure_estimate_en: true
+      inv_expo_cov: 0.1
+
+    imu:
+      imu_en: true
+      imu_int_frame: 30
+      acc_cov: 0.5
+      gyr_cov: 0.3
+      b_acc_cov: 0.0001
+      b_gyr_cov: 0.0001
+
+    lio:
+      max_iterations: 5
+      dept_err: 0.02
+      beam_err: 0.05
+      min_eigen_value: 0.0025
+      voxel_size: 0.5
+      max_layer: 2
+      max_points_num: 50
+      layer_init_num: [5, 5, 5, 5, 5]
+
+    local_map:  
+      map_sliding_en: false
+      half_map_size: 100
+      sliding_thresh: 8.0
+
+    uav:
+      imu_rate_odom: false
+      gravity_align_en: true
+
+    publish:
+      dense_map_en: true
+      pub_effect_point_en: false 
+      pub_plane_en: false
+      pub_scan_num: 1
+      blind_rgb_points: 0.0
+
+    evo:
+      seq_name: "mid360_realsense" 
+      pose_output_en: false       # 启用位姿轨迹保存
+
+    pcd_save:
+      pcd_save_en: false          # 启用PCD保存
+      colmap_output_en: false     # 启用COLMAP格式输出
+      filter_size_pcd: 0.15      # 点云下采样大小
+      interval: -1               # -1=程序结束时保存, >0=每interval次扫描保存 
