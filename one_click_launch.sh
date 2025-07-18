@@ -3,7 +3,7 @@
 # 一键启动脚本 - 同时启动fast_livo2和elevation_mapping工作空间的所有节点
 
 # 需要提前安装终端复用器：Tmux
-    sudo apt update && sudo apt install tmux -y
+# sudo apt update && sudo apt install tmux -y
     
 # 颜色定义
 RED='\033[0;31m'
@@ -13,8 +13,8 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # 工作空间路径
-FAST_LIVO_WS="/home/nuc11/fast_livo2_bxi4"
-ELEVATION_WS="/home/nuc11/elevation_mapping_bxi4"
+FAST_LIVO_WS="/home/xuxin/fastlivo2_bxi6"
+ELEVATION_WS="/home/xuxin/elevation_mapping_bxi6"
 
 # 日志文件路径
 LOG_DIR="${FAST_LIVO_WS}/logs"
@@ -55,74 +55,8 @@ create_session() {
     fi
     
     echo -e "${GREEN}启动会话: $session_name${NC}"
-    tmux new-session -d -s "$session_name" -c "$PWD"nuc11@nuc11-NUC11TNKi5:~/fast_livo2_bxi4$ ./one_click_launch.sh
-=== Fast-LIVO2 + Elevation Mapping 一键启动脚本 ===
-启动时间: 2025年 07月 14日 星期一 15:40:33 CST
-检查工作空间...
-=== 开始启动所有节点 ===
-启动 Livox MID360 激光雷达驱动...
-启动会话: livox_driver
-日志文件: /home/nuc11/fast_livo2_bxi4/logs/livox_driver_20250714_154033.log
-等待激光雷达启动...
-启动 Fast-LIVO2 建图节点...
-启动会话: fast_livo_mapping
-日志文件: /home/nuc11/fast_livo2_bxi4/logs/fast_livo_mapping_20250714_154040.log
-等待建图节点启动...
-启动 Elevation Mapping 节点...
-启动 全局高程地图提取器...
-启动会话: global_elevation
-日志文件: /home/nuc11/fast_livo2_bxi4/logs/global_elevation_20250714_154047.log
-启动 局部高程地图提取器...
-启动会话: local_elevation
-日志文件: /home/nuc11/fast_livo2_bxi4/logs/local_elevation_20250714_154051.log
-启动 机器人高度地图发布器...
-启动会话: robot_height
-日志文件: /home/nuc11/fast_livo2_bxi4/logs/robot_height_20250714_154055.log
-=== 所有节点启动完成 ===
-日志文件位置: /home/nuc11/fast_livo2_bxi4/logs
-使用 'tmux list-sessions' 查看所有会话
-使用 './one_click_launch.sh status' 查看节点状态
-使用 './one_click_launch.sh monitor' 监控节点状态
-nuc11@nuc11-NUC11TNKi5:~/fast_livo2_bxi4$ ros2 topic list 
-/LIVO2/imu_propagate
-/Laser_map
-/aft_mapped_to_init
-/camera/camera/color/image_raw
-/clicked_point
-/cloud_effected
-/cloud_registered
-/cloud_visual_sub_map_before
-/dyn_obj
-/dyn_obj_dbg_hist
-/dyn_obj_removed
-/in/compressed
-/initialpose
-/livox/imu
-/livox/lidar
-/local_elevation_map_z_up
-/mavros/vision_pose/pose
-/motion_commands
-/move_base_simple/goal
-/parameter_events
-/path
-/planes
-/planner_normal
-/planner_normal_array
-/rgb_img
-/rgb_img/compressed
-/rgb_img/compressedDepth
-/rgb_img/theora
-/robot_height_map
-/rosout
-/simulation/actuators_cmds
-/simulation/imu_data
-/simulation/joint_states
-/simulation/odom
-/tf
-/tf_static
-/visualization_marker
-/visualization_marker_array
-/voxels
+    # 修复：移除错误的终端输出混入
+    tmux new-session -d -s "$session_name" -c "$PWD"
     tmux send-keys -t "$session_name" "$command" Enter
     
     if [ ! -z "$log_file" ]; then
@@ -194,6 +128,9 @@ show_status() {
     echo -e "\n${BLUE}=== ROS2 节点状态 ===${NC}"
     source /opt/ros/humble/setup.bash
     ros2 node list 2>/dev/null | grep -E "(livox|fast_livo|elevation|robot_height)" || echo -e "${YELLOW}没有找到相关ROS2节点${NC}"
+    
+    echo -e "\n${BLUE}=== ROS2 话题状态 ===${NC}"
+    echo -e "关键话题数量: $(ros2 topic list 2>/dev/null | grep -E "(livox|LIVO|elevation|robot_height)" | wc -l)"
 }
 
 # 监控节点状态
@@ -207,6 +144,10 @@ monitor_nodes() {
         echo -e "\n${BLUE}=== 系统资源 ===${NC}"
         echo -e "内存使用率: $(free | grep Mem | awk '{printf("%.1f%%", $3/$2 * 100.0)}')"
         echo -e "CPU使用率: $(top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1"%"}')"
+        
+        echo -e "\n${BLUE}=== 重要话题频率 ===${NC}"
+        echo -e "激光雷达: $(ros2 topic hz /livox/lidar --once 2>/dev/null | grep "average rate" | awk '{print $3}' || echo "N/A") Hz"
+        echo -e "IMU数据: $(ros2 topic hz /livox/imu --once 2>/dev/null | grep "average rate" | awk '{print $3}' || echo "N/A") Hz"
         
         echo -e "\n${YELLOW}5秒后刷新...${NC}"
         sleep 5
