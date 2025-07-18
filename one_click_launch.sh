@@ -1,10 +1,7 @@
 #!/bin/bash
-
 # 一键启动脚本 - 同时启动fast_livo2和elevation_mapping工作空间的所有节点
-
 # 需要提前安装终端复用器：Tmux
 # sudo apt update && sudo apt install tmux -y
-    
 # 颜色定义
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -19,10 +16,8 @@ ELEVATION_WS="/home/xuxin/elevation_mapping_bxi6"
 # 日志文件路径
 LOG_DIR="${FAST_LIVO_WS}/logs"
 mkdir -p $LOG_DIR
-
 echo -e "${BLUE}=== Fast-LIVO2 + Elevation Mapping 一键启动脚本 ===${NC}"
 echo -e "${YELLOW}启动时间: $(date)${NC}"
-
 # 检查工作空间是否存在
 check_workspace() {
     local ws_path=$1
