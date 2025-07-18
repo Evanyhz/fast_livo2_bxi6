@@ -2,7 +2,7 @@
 
 # 一键启动脚本 - 同时启动fast_livo2和elevation_mapping工作空间的所有节点
 
-需要提前安装终端复用器：Tmux
+# 需要提前安装终端复用器：Tmux
     sudo apt update && sudo apt install tmux -y
     
 # 颜色定义
