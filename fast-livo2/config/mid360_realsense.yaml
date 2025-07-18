@@ -23,9 +23,6 @@
     # d2: -0.001660
     # d3: -0.008149
 
-
-
-
     common:
       img_topic: "/camera/camera/color/image_raw"
       lid_topic: "/livox/lidar"
@@ -93,7 +90,7 @@
 
 
     time_offset: 
-      imu_time_offset: 0.0
+      imu_time_offset: 0.0  
       img_time_offset: 0.0
       exposure_time_init: 0.0
 

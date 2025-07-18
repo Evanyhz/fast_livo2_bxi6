@@ -1,4 +1,3 @@
-
 # 一键启动脚本：
     ./one_click_launch.sh
 # 一键关闭：
@@ -7,8 +6,11 @@
 colcon build --packages-select fast_livo   #单独编译fast-livo2
 ```bash
 一、 激光雷达——mid360启动
+    
+     首先要配置电脑网口ip，打开有线设置，IPv4设置为 “手动” ，IP和子网掩码分别设为：
 <!-- 电脑ip需设置为：    "point_data_ip": "192.168.2.50",  255.255.255.0
       雷达ip已预设为：         "ip" : "192.168.2.202", -->
+      
 ```bash
 # rviz不启动(建图是要选这种启动方式)
   source install/setup.bash && ros2 launch livox_ros_driver2 msg_MID360_launch.py
@@ -40,7 +42,6 @@ colcon build --packages-select fast_livo   #单独编译fast-livo2
 ```bash
 # %MEM ：进程使用的物理内存百分比,建图是，内存涨到50%则会卡顿，大约10min左右
   top 命令查看
-# 
 # 安装缺失的image_transport插件(解决建图节点挂掉):
 sudo apt update && sudo apt install ros-humble-image-transport-plugins
 
