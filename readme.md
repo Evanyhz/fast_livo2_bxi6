@@ -69,7 +69,7 @@ SO2::SO2()
 ## - [uavfly/vikit](https://github.com/uavfly/vikit)
 
 ``` -->
-# Different from the one used in fast-livo1
+Different from the one used in fast-livo1
 #cd fast_ws/src
 #git clone https://github.com/integralrobotics/rpg_vikit  #viki已经放在src里了，不需要重新下载
 
