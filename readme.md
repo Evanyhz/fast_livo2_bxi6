@@ -58,20 +58,20 @@ SO2::SO2()
 ``` -->
 
 ### 2.4 Vikit
+<!-- 
+#Vikit contains camera models, some math and interpolation functions that we need. Vikit is a catkin project, therefore, download it into your catkin workspace source folder.
 
-Vikit contains camera models, some math and interpolation functions that we need. Vikit is a catkin project, therefore, download it into your catkin workspace source folder.
+#For well-known reasons, ROS2 does not have a direct global parameter server and a simple method to obtain the corresponding parameters. For details, please refer to https://discourse.ros.org/t/ros2-global-parameter-#server-status/10114/11. I use a special way to get camera parameters in Vikit. While the method I've provided so far is quite simple and not perfect, it meets my needs. More contributions to improve `rpg_vikit` are #hoped.
 
-For well-known reasons, ROS2 does not have a direct global parameter server and a simple method to obtain the corresponding parameters. For details, please refer to https://discourse.ros.org/t/ros2-global-parameter-server-status/10114/11. I use a special way to get camera parameters in Vikit. While the method I've provided so far is quite simple and not perfect, it meets my needs. More contributions to improve `rpg_vikit` are hoped.
+## Thanks to the following repositories for the code reference:
+## - [uzh-rpg/rpg_vikit](https://github.com/uzh-rpg/rpg_vikit)
+## - [xuankuzcr/rpg_vikit](https://github.com/xuankuzcr/rpg_vikit)
+## - [uavfly/vikit](https://github.com/uavfly/vikit)
 
-```bash
+``` -->
 # Different from the one used in fast-livo1
-cd fast_ws/src
-git clone https://github.com/integralrobotics/rpg_vikit  #viki已经放在src里了，不需要重新下载
-
-# Thanks to the following repositories for the code reference:
-# - [uzh-rpg/rpg_vikit](https://github.com/uzh-rpg/rpg_vikit)
-# - [xuankuzcr/rpg_vikit](https://github.com/xuankuzcr/rpg_vikit)
-# - [uavfly/vikit](https://github.com/uavfly/vikit)
+#cd fast_ws/src
+#git clone https://github.com/integralrobotics/rpg_vikit  #viki已经放在src里了，不需要重新下载
 
 ### 2.5 **livox_ros_driver2**
     2.5.1 编译安装 Livox-SDK2：
@@ -91,6 +91,7 @@ git clone https://github.com/integralrobotics/rpg_vikit  #viki已经放在src里
     #  why not use `livox_ros_driver`? Because it is not compatible with ROS2 directly. actually i am not think there s any difference between [livox ros driver](https://github.com/Livox-SDK/livox_ros_driver.git) and [livox ros driver2](https://github.com/Livox-SDK/livox_ros_driver2.git) 's `CustomMsg`, the latter 's ros2 version is sufficient.
 
 ## 3. Build
+```bash
      # Clone the repository and colcon build:
       ```Thanks to the following repositories for the code reference:
 # - [uzh-rpg/rpg_vikit](https://github.com/uzh-rpg/rpg_vikit)
