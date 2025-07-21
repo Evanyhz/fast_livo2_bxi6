@@ -40,7 +40,7 @@ colcon build --packages-select fast_livo   #单独编译fast-livo2
 
 # 查看内存占用
 ```bash
-# %MEM ：进程使用的物理内存百分比,建图是，内存涨到50%则会卡顿，大约10min左右
+# %MEM ：进程使用的物理内存百分比,fast-livo2建图时，内存涨到50%则会卡顿，大约10min左右
   top 命令查看
 # 安装缺失的image_transport插件(解决建图节点挂掉):
 sudo apt update && sudo apt install ros-humble-image-transport-plugins
