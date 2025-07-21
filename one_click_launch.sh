@@ -1,7 +1,10 @@
 #!/bin/bash
+
 # 一键启动脚本 - 同时启动fast_livo2和elevation_mapping工作空间的所有节点
+
 # 需要提前安装终端复用器：Tmux
-# sudo apt update && sudo apt install tmux -y
+sudo apt update && sudo apt install tmux -y
+    
 # 颜色定义
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -16,8 +19,10 @@ ELEVATION_WS="$HOME/elevation_mapping_bxi6"
 # 日志文件路径
 LOG_DIR="${FAST_LIVO_WS}/logs"
 mkdir -p $LOG_DIR
+
 echo -e "${BLUE}=== Fast-LIVO2 + Elevation Mapping 一键启动脚本 ===${NC}"
 echo -e "${YELLOW}启动时间: $(date)${NC}"
+
 # 检查工作空间是否存在
 check_workspace() {
     local ws_path=$1
@@ -160,7 +165,7 @@ start_all_nodes() {
     
     # 等待激光雷达启动
     echo -e "${YELLOW}等待激光雷达启动...${NC}"
-    sleep 5
+    sleep 1
     
     # 2. 启动Fast-LIVO2建图
     start_node "fast_livo_mapping" "$FAST_LIVO_WS" \
@@ -169,7 +174,7 @@ start_all_nodes() {
     
     # 等待建图节点启动
     echo -e "${YELLOW}等待建图节点启动...${NC}"
-    sleep 5
+    sleep 1
     
     # 3. 启动elevation mapping节点
     if [ -d "$ELEVATION_WS" ]; then
@@ -179,13 +184,13 @@ start_all_nodes() {
             "ros2 launch elevation_mapping global_elevation_map_extractor_launch.py" \
             "全局高程地图提取器"
         
-        sleep 2
+        sleep 1
         
         start_node "local_elevation" "$ELEVATION_WS" \
             "ros2 launch elevation_mapping local_elevation_map_extractor_z_up_launch.py" \
             "局部高程地图提取器"
         
-        sleep 2
+        sleep 1
         
         start_node "robot_height" "$ELEVATION_WS" \
             "python3 simple_robot_height_map_publisher.py" \
@@ -211,7 +216,7 @@ case "${1:-start}" in
         ;;
     "restart")
         stop_all_sessions
-        sleep 3
+        sleep 1
         start_all_nodes
         ;;
     "status")
