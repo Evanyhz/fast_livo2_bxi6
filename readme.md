@@ -15,4 +15,13 @@
   mv elevation_mapping_bxi6 src      
   然后按照clone文件夹的 readme 进行配置
 ```
+
+# 3.配置IP:
+```bash
+  mkdir -p ~/elevation_mapping_bxi6
+  cd elevation_mapping_bxi6
+  git clone https://github.com/Evanyhz/elevation_mapping_bxi6
+  mv elevation_mapping_bxi6 src      
+  然后按照clone文件夹的 readme 进行配置
+```
   
