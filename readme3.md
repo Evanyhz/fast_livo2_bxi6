@@ -1,4 +1,4 @@
-# FAST-LIVO2 ROS2 HUMBLE
+<!-- # FAST-LIVO2 ROS2 HUMBLE
 ### 1.1 Related video
 Our accompanying video is now available on [**Bilibili**](https://www.bilibili.com/video/BV1Ezxge7EEi) and [**YouTube**](https://youtu.be/6dF2DzgbtlY).
 
@@ -21,8 +21,7 @@ Ubuntu 22.04.  [ROS Installation](http://wiki.ros.org/ROS/Installation).
 ### 2.2 PCL && Eigen && OpenCV
 PCL>=1.6, Follow [PCL Installation](https://pointclouds.org/). 
 Eigen>=3.3.4, Follow [Eigen Installation](https://eigen.tuxfamily.org/index.php?title=Main_Page).
-OpenCV>=3.2, Follow [Opencv Installation](http://opencv.org/).
-
+OpenCV>=3.2, Follow [Opencv Installation](http://opencv.org/).  -->
 ### 2.3 Sophus
 
 一、Binary installation（二进制安装）
@@ -55,10 +54,10 @@ SO2::SO2()
 +  unit_complex_.real(1.);
 +  unit_complex_.imag(0.);
 }
-``` -->
+``` 
 
 ### 2.4 Vikit
-<!-- 
+
 #Vikit contains camera models, some math and interpolation functions that we need. Vikit is a catkin project, therefore, download it into your catkin workspace source folder.
 
 #For well-known reasons, ROS2 does not have a direct global parameter server and a simple method to obtain the corresponding parameters. For details, please refer to https://discourse.ros.org/t/ros2-global-parameter-#server-status/10114/11. I use a special way to get camera parameters in Vikit. While the method I've provided so far is quite simple and not perfect, it meets my needs. More contributions to improve `rpg_vikit` are #hoped.
@@ -68,11 +67,11 @@ SO2::SO2()
 ## - [xuankuzcr/rpg_vikit](https://github.com/xuankuzcr/rpg_vikit)
 ## - [uavfly/vikit](https://github.com/uavfly/vikit)
 
-``` -->
+``` 
 Different from the one used in fast-livo1
 #cd fast_ws/src
 #git clone https://github.com/integralrobotics/rpg_vikit  #viki已经放在src里了，不需要重新下载
-
+-->
 ### 2.5 **livox_ros_driver2**
     2.5.1 编译安装 Livox-SDK2：
           # 新建终端，并运行：
@@ -104,7 +103,7 @@ Different from the one used in fast-livo1
       colcon build --symlink-install --packages-ignore livox_ros_driver2 ##注意，这里要把livox_ros_driver2进行编译排除，不然会报错
       source ~/fast_ws/install/setup.bash
 ```
-
+<!--
 ## 4. Run our examples    
 
 Download our collected rosbag files via OneDrive ([**FAST-LIVO2-Dataset**](https://connecthkuhk-my.sharepoint.com/:f:/g/personal/zhengcr_connect_hku_hk/ErdFNQtjMxZOorYKDTtK4ugBkogXfq1OfDm90GECouuIQA?e=KngY9Z)). 
@@ -165,3 +164,4 @@ ros2 bag play -p Retail_Street  # space bar controls play/pause
 ## 5. License
 
 The source code of this package is released under the [**GPLv2**](http://www.gnu.org/licenses/) license. For commercial use, please contact me at <zhengcr@connect.hku.hk> and Prof. Fu Zhang at <fuzhang@hku.hk> to discuss an alternative license.
+-->
