@@ -1,4 +1,5 @@
 # 1.打开终端，新建fast_livo2_bxi6文件夹：
+###
   mkdir -p ~/fast_livo2_bxi6
   cd fast_livo2_bxi6
   git clone https://github.com/Evanyhz/fast_livo2_bxi6
