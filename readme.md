@@ -4,7 +4,7 @@
   cd fast_livo2_bxi6
   git clone https://github.com/Evanyhz/fast_livo2_bxi6
   mv fast_livo2_bxi6 src       #把克隆过来的的文件夹重命名为src
-  #然后按照clone文件夹内的 readme3.md 部署, 只需要关注未注释的部分，即2.3节/2.5节/3.0节
+  #然后按 readme3.md 部署, 只需要关注未注释的部分，即2.3节/2.5节/3.0节
 ```
   
 # 2.部署elevation_mapping：
@@ -13,7 +13,7 @@
   cd elevation_mapping_bxi6
   git clone https://github.com/Evanyhz/elevation_mapping_bxi6
   mv elevation_mapping_bxi6 src      
-  #然后按照clone文件夹内的 readme 进行配置
+  #然后按照对应的 readme 配置
 ```
 
 # 3.配置IP:
