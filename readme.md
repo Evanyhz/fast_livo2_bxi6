@@ -26,7 +26,7 @@
 # 4.一键启动:
 ```bash
 source /opt/ros/humble/setup.bash && source install/setup.bash 
-cd ~/fast_livo2_bxi6/src
+cd src/
 ./one_click_launch.sh
 
 #一键关闭
