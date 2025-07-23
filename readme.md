@@ -31,5 +31,7 @@ cd ~/fast_livo2_bxi6/src
 
 #一键关闭
 ./one_click_launch.sh stop
+
+#单独启动：fast-livo2的启动命令见instruction.md ；  elevation_mapping的启动命令见其功能包下的readme.md
 ```
   
