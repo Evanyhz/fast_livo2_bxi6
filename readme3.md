@@ -101,7 +101,7 @@ Different from the one used in fast-livo1
       sudo apt update && sudo apt install ros-humble-image-transport-plugins
       # colcon build --symlink-install --continue-on-error  
       colcon build --symlink-install --packages-ignore livox_ros_driver2 ##注意，这里要把livox_ros_driver2进行编译排除，不然会报错
-      source ~/fast_ws/install/setup.bash
+      #source ~/fast_ws/install/setup.bash
 ```
 <!--
 ## 4. Run our examples    
