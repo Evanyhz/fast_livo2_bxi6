@@ -1,5 +1,6 @@
 # 1.部署fast_livo2：
 ```bash
+#新建终端，然后运行下列命令：
   mkdir -p ~/fast_livo2_bxi6    #新建文件夹
   cd fast_livo2_bxi6
   git clone https://github.com/Evanyhz/fast_livo2_bxi6
@@ -9,6 +10,7 @@
   
 # 2.部署elevation_mapping：
 ```bash
+#新建终端，然后运行下列命令：
   mkdir -p ~/elevation_mapping_bxi6
   cd elevation_mapping_bxi6
   git clone https://github.com/Evanyhz/elevation_mapping_bxi6
@@ -25,13 +27,15 @@
 
 # 4.一键启动:
 ```bash
-source /opt/ros/humble/setup.bash && source install/setup.bash 
-cd src/
-./one_click_launch.sh
+#进入fast_livo2_bxi6工作空间：
+  source /opt/ros/humble/setup.bash && source install/setup.bash 
+  cd src/
+  ./one_click_launch.sh
 
 #一键关闭
-./one_click_launch.sh stop
+  ./one_click_launch.sh stop
 
-#单独启动：fast-livo2的启动命令详见instruction.md ；  elevation_mapping的启动命令详见其功能包下的readme.md
+#单独启动：
+fast-livo2的启动命令详见instruction.md ；  elevation_mapping的启动命令详见其功能包下的readme.md
 ```
   
