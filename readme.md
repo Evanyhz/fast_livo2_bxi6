@@ -27,6 +27,9 @@
 
 # 4.一键启动:
 ```bash
+# 需要提前安装终端复用器：Tmux
+  sudo apt update && sudo apt install tmux -y
+
 #进入fast_livo2_bxi6工作空间：
   source /opt/ros/humble/setup.bash && source install/setup.bash 
   cd src/
