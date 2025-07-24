@@ -9,7 +9,7 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # 工作空间路径
-FAST_LIVO_WS="$HOME/fastlivo2_bxi6"
+FAST_LIVO_WS="$HOME/fast_livo2_bxi6"
 ELEVATION_WS="$HOME/elevation_mapping_bxi6"
 
 # 日志文件路径
