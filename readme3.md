@@ -97,7 +97,7 @@ Different from the one used in fast-livo1
 # - [xuankuzcr/rpg_vikit](https://github.com/xuankuzcr/rpg_vikit)
 # - [uavfly/vikit](https://github.com/uavfly/vikit)
 
-      # 安装缺失的image_transport插件(解决建图节点挂掉):
+      # 安装image_transport:
       sudo apt update && sudo apt install ros-humble-image-transport-plugins
       # colcon build --symlink-install --continue-on-error  
       colcon build --symlink-install --packages-ignore livox_ros_driver2 ##注意，这里要把livox_ros_driver2进行编译排除，不然会报错
