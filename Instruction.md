@@ -1,4 +1,4 @@
-# 一键启动脚本： 需要修改成你自己的路径
+# 一键启动脚本： 注意路径
     ./one_click_launch.sh
 # 一键关闭：
     ./one_click_launch.sh stop 
