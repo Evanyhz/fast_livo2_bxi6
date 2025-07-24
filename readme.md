@@ -1,6 +1,6 @@
 # 1.部署fast_livo2：
 ```bash
-#新建终端，然后运行下列命令：
+#在根目录下新建终端，然后运行下列命令：
   mkdir -p ~/fast_livo2_bxi6    #新建文件夹
   cd fast_livo2_bxi6
   git clone https://github.com/Evanyhz/fast_livo2_bxi6
